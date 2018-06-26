@@ -14,7 +14,28 @@ Manually way/library to generate config metadata for spring boot
 ### Information
  * [Spring boot configuration-metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)
 
-### Usage
+### Usage auto configuration classes
+* You could generate auto configuration classes out of a test like this
+```java
+@Test
+public void generateAutoConfigMetadata() throws IOException {
+    AutoConfigurationClass classList = new AutoConfigurationClass(Groups.class, Hints.class);
+    classList.newAutoConfigClass(Values.class, Properties.class);
+
+    Path generated = classList.generate();
+
+}
+```
+* Output from example:
+```properties
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+berlin.yuna.configmetadata.model.Groups
+berlin.yuna.configmetadata.model.Hints
+berlin.yuna.configmetadata.model.Values
+berlin.yuna.configmetadata.model.Properties
+```
+
+### Usage Configuration Metadata
 * You could generate metadata out of a test like this
 ```java
 public class ConfigMetadataGeneratorTest {

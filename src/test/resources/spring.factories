@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+berlin.yuna.configmetadata.model.Groups
+berlin.yuna.configmetadata.model.Hints
+berlin.yuna.configmetadata.model.Values
+berlin.yuna.configmetadata.model.Properties
