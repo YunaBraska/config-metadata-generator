@@ -19,93 +19,81 @@ Manually way/library to generate config metadata for spring boot
 ```java
 public class ConfigMetadataGeneratorTest {
 
-	//GENERATION START
-    @Test
+	@Test
     public void generateMetadataFromEnum() throws IOException {
         ConfigurationMetadata metadata = new ConfigurationMetadata("my.group", ExampleEnumConfig.class);
 
         for (ExampleEnumConfig c : ExampleEnumConfig.values()) {
             Class type = c.getDefaultValue().getClass();
-            Properties prop = new Properties(c.name().toLowerCase(), c.getDescription(), type);
-            metadata.getProperties().add(prop);
+            metadata.newProperties().name(c.name().toLowerCase()).description(c.getDescription()).type(type);
         }
 
-        Path generated = metadata.generate();
-    }
-	//GENERATION END
-	
-    //Test datasource - so you know where the generated Json is comming from...
-    enum ExampleEnumConfig {
-
-        //ExampleDefaultConfig
-        CLUSTER_ID("test-cluster", "Cluster ID (default: test-cluster)"),
-        PORT(4222, "Use port for clients (default: 8080)"),
-        MAX_BYTES(0L, "Max messages total size per channel (0 for unlimited)"),
-        INFO(true, "Enable info output"),
-        DEBUG(false, "Debug the raw protocol");
-
-        private final Object defaultValue;
-        private final String description;
-
-        ExampleEnumConfig(Object defaultValue, String description) {
-            this.defaultValue = defaultValue;
-            this.description = description;
-        }
-
-        public Object getDefaultValue() {
-            return defaultValue;
-        }
-
-        public String getDescription() {
-            return description;
-        }
+        metadata.generate();
     }
 }
 ```
+* Test config enum class behind the scenes
+```java
+public enum ExampleEnumConfig {
 
+    CLUSTER_ID("test-cluster", "Cluster ID (default: test-cluster)"),
+    PORT(4222, "Use port for clients (default: 4222)"),
+    MAX_BYTES(0L, "Max messages total size per channel (0 for unlimited)"),
+    INFO(true, "Enable info output"),
+    DEBUG(false, "Debug the raw protocol");
+
+    private final Object defaultValue;
+    private final String description;
+
+    ExampleEnumConfig(Object defaultValue, String description) {
+        this.defaultValue = defaultValue;
+        this.description = description;
+    }
+
+    public Object getDefaultValue() {
+        return defaultValue;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+}
+```
 * output from example:
 ```json
 {
-  "hints": [],
-  "groups": [
-    {
-      "name": "my.group",
-      "type": "berlin.yuna.configmetadata.logic.ConfigMetadataGeneratorTest$ExampleEnumConfig",
-      "sourceType": "berlin.yuna.configmetadata.logic.ConfigMetadataGeneratorTest$ExampleEnumConfig"
-    }
-  ],
-  "properties": [
-    {
-      "name": "my.group.cluster_id",
-      "type": "java.lang.String",
-      "description": "Cluster ID (default: test-cluster)",
-      "sourceType": "berlin.yuna.configmetadata.logic.ConfigMetadataGeneratorTest$ExampleEnumConfig"
-    },
-    {
-      "name": "my.group.port",
-      "type": "java.lang.Integer",
-      "description": "Use port for clients (default: 4222)",
-      "sourceType": "berlin.yuna.configmetadata.logic.ConfigMetadataGeneratorTest$ExampleEnumConfig"
-    },
-    {
-      "name": "my.group.max_bytes",
-      "type": "java.lang.Long",
-      "description": "Max messages total size per channel (0 for unlimited)",
-      "sourceType": "berlin.yuna.configmetadata.logic.ConfigMetadataGeneratorTest$ExampleEnumConfig"
-    },
-    {
-      "name": "my.group.info",
-      "type": "java.lang.Boolean",
-      "description": "Enable info output",
-      "sourceType": "berlin.yuna.configmetadata.logic.ConfigMetadataGeneratorTest$ExampleEnumConfig"
-    },
-    {
-      "name": "my.group.debug",
-      "type": "java.lang.Boolean",
-      "description": "Debug the raw protocol",
-      "sourceType": "berlin.yuna.configmetadata.logic.ConfigMetadataGeneratorTest$ExampleEnumConfig"
-    }
-  ]
+  "hints" : [ ],
+  "groups" : [ {
+    "name" : "my.group",
+    "type" : "berlin.yuna.configmetadata.model.ExampleEnumConfig",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+  } ],
+  "properties" : [ {
+    "name" : "my.group.cluster_id",
+    "type" : "java.lang.String",
+    "description" : "Cluster ID (default: test-cluster)",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+  }, {
+    "name" : "my.group.port",
+    "type" : "java.lang.Integer",
+    "description" : "Use port for clients (default: 4222)",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+  }, {
+    "name" : "my.group.max_bytes",
+    "type" : "java.lang.Long",
+    "description" : "Max messages total size per channel (0 for unlimited)",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+  }, {
+    "name" : "my.group.info",
+    "type" : "java.lang.Boolean",
+    "description" : "Enable info output",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+  }, {
+    "name" : "my.group.debug",
+    "type" : "java.lang.Boolean",
+    "description" : "Debug the raw protocol",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+  } ]
 }
 ```
 

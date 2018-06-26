@@ -14,40 +14,46 @@ public class Groups {
         return name;
     }
 
-    public void setName(String name) {
+    public Groups name(String name) {
         this.name = name;
+        return this;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public Groups type(String type) {
         this.type = type;
+        return this;
     }
 
-    public void setType(Class type) {
+    public Groups type(Class type) {
         this.type = type.getTypeName();
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Groups description(String description) {
         this.description = description;
+        return this;
     }
 
     public String getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(String sourceType) {
+    public Groups sourceType(String sourceType) {
         this.sourceType = sourceType;
+        return this;
     }
 
-    public void setSourceType(Class sourceType) {
+    public Groups sourceType(Class sourceType) {
         this.sourceType = sourceType.getTypeName();
+        return this;
     }
 
     public String getSourceMethod() {

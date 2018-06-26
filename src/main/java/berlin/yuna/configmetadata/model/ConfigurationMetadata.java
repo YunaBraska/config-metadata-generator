@@ -26,11 +26,15 @@ public class ConfigurationMetadata {
     private ArrayList<Groups> groups = new ArrayList<>();
     private ArrayList<Properties> properties = new ArrayList<>();
 
+    public ConfigurationMetadata() {
+
+    }
+
     public ConfigurationMetadata(String group, Class sourceType) {
         Groups groups = new Groups();
-        groups.setName(group);
-        groups.setType(sourceType);
-        groups.setSourceType(sourceType);
+        groups.name(group);
+        groups.type(sourceType);
+        groups.sourceType(sourceType);
         getGroups().add(groups);
     }
 
@@ -42,6 +46,12 @@ public class ConfigurationMetadata {
         this.hints = hints;
     }
 
+    public Hints newHints() {
+        Hints hints = new Hints();
+        getHints().add(hints);
+        return hints;
+    }
+
     public ArrayList<Groups> getGroups() {
         return groups;
     }
@@ -50,12 +60,24 @@ public class ConfigurationMetadata {
         this.groups = groups;
     }
 
+    public Groups newGroups() {
+        Groups groups = new Groups();
+        getGroups().add(groups);
+        return groups;
+    }
+
     public ArrayList<Properties> getProperties() {
         return properties;
     }
 
     public void setProperties(ArrayList<Properties> properties) {
         this.properties = properties;
+    }
+
+    public Properties newProperties() {
+        Properties properties = new Properties();
+        getProperties().add(properties);
+        return properties.sourceType(Properties.class);
     }
 
     /**

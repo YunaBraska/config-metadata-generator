@@ -12,24 +12,27 @@ public class Deprecation {
         return level;
     }
 
-    public void setLevel(String level) {
+    public Deprecation level(String level) {
         this.level = level;
+        return this;
     }
 
     public String getReason() {
         return reason;
     }
 
-    public void setReason(String reason) {
+    public Deprecation reason(String reason) {
         this.reason = reason;
+        return this;
     }
 
     public String getReplacement() {
         return replacement;
     }
 
-    public void setReplacement(String replacement) {
+    public Deprecation setReplacement(String replacement) {
         this.replacement = replacement;
+        return this;
     }
 
     @Override

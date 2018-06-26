@@ -1,7 +1,7 @@
 package berlin.yuna.configmetadata.logic;
 
 import berlin.yuna.configmetadata.model.ConfigurationMetadata;
-import berlin.yuna.configmetadata.model.Properties;
+import berlin.yuna.configmetadata.model.ExampleEnumConfig;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,40 +33,18 @@ public class ConfigMetadataGeneratorTest {
 
         for (ExampleEnumConfig c : ExampleEnumConfig.values()) {
             Class type = c.getDefaultValue().getClass();
-            Properties prop = new Properties(c.name().toLowerCase(), c.getDescription(), type);
-            metadata.getProperties().add(prop);
+            metadata.newProperties().name(c.name().toLowerCase()).description(c.getDescription()).type(type);
         }
 
         Path generated = metadata.generate();
+
+        validateOutput(generated);
+    }
+
+    private void validateOutput(Path generated) throws IOException {
         assertThat(generated, is(notNullValue()));
         Path original = Paths.get(getClass().getClassLoader().getResource("spring-configuration-metadata.json").getPath());
         assertThat(new String(readAllBytes(generated)), is(equalTo(new String(readAllBytes(original)))));
-    }
-
-    enum ExampleEnumConfig {
-
-        //ExampleDefaultConfig
-        CLUSTER_ID("test-cluster", "Cluster ID (default: test-cluster)"),
-        PORT(4222, "Use port for clients (default: 4222)"),
-        MAX_BYTES(0L, "Max messages total size per channel (0 for unlimited)"),
-        INFO(true, "Enable info output"),
-        DEBUG(false, "Debug the raw protocol");
-
-        private final Object defaultValue;
-        private final String description;
-
-        ExampleEnumConfig(Object defaultValue, String description) {
-            this.defaultValue = defaultValue;
-            this.description = description;
-        }
-
-        public Object getDefaultValue() {
-            return defaultValue;
-        }
-
-        public String getDescription() {
-            return description;
-        }
     }
 
     private Path getMetaDataPath() {

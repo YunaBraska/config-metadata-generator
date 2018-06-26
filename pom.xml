@@ -12,7 +12,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -35,7 +35,7 @@
 
     <properties>
         <spring-boot.version>2.0.2.RELEASE</spring-boot.version>
-        <git-project.url>https://github.com/YunaBraska/nats-streaming-server-embedded</git-project.url>
+        <git-project.url>https://github.com/YunaBraska/config-metadata-generator</git-project.url>
     </properties>
 
     <dependencies>

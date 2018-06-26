@@ -13,16 +13,24 @@ public class Hints {
         return name;
     }
 
-    public void setName(String name) {
+    public Hints setName(String name) {
         this.name = name;
+        return this;
     }
 
     public List<Values> getValues() {
         return values;
     }
 
-    public void setValues(List<Values> values) {
+    public Hints setValues(List<Values> values) {
         this.values = values;
+        return this;
+    }
+
+    public Values newValues() {
+        Values values = new Values();
+        getValues().add(values);
+        return values;
     }
 
     @Override

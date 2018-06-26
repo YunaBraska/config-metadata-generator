@@ -11,75 +11,87 @@ public class Properties {
     private Object defaultValue;
     private Deprecation deprecation;
 
+    public Properties() {
+        
+    }
+
     public Properties(String name, String description, Class type) {
         this(name, description, type, Properties.class);
     }
 
     public Properties(String name, String description, Class type, Class sourceType) {
-        setName(name);
-        setDescription(description);
-        setType(type);
-        setSourceType(sourceType);
+        name(name);
+        description(description);
+        type(type);
+        sourceType(sourceType);
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        setName("${default.group}", name);
+    public Properties name(String name) {
+        return name("${default.group}", name);
     }
 
-    public void setName(String group, String name) {
+    public Properties name(String group, String name) {
         this.name = group + "." + name;
+        return this;
     }
 
     public String getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public Properties type(String type) {
         this.type = type;
+        return this;
     }
 
-    public void setType(Class type) {
+    public Properties type(Class type) {
         this.type = type.getTypeName();
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public Properties description(String description) {
         this.description = description;
+        return this;
     }
 
     public String getSourceType() {
         return sourceType;
     }
 
-    public void setSourceType(String sourceType) {
+    public Properties sourceType(String sourceType) {
         this.sourceType = sourceType;
+        return this;
     }
 
-    public void setSourceType(Class sourceType) {
+    public Properties sourceType(Class sourceType) {
         this.sourceType = sourceType.getTypeName();
+        return this;
     }
 
     public Object getDefaultValue() {
         return defaultValue;
     }
 
-    public void setDefaultValue(Object defaultValue) {
+    public Properties defaultValue(Object defaultValue) {
         this.defaultValue = defaultValue;
+        return this;
     }
 
     public Deprecation getDeprecation() {
         return deprecation;
     }
 
-    public void setDeprecation(Deprecation deprication) {
+    public Properties deprecation(Deprecation deprication) {
         this.deprecation = deprication;
+        return this;
     }
 
     @Override
