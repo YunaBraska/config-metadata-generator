@@ -16,7 +16,7 @@
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-    <description>Manually way to generate config metadata for spring boot</description>
+    <description>Manually way/library to generate config metadata for spring boot</description>
     <url>${git-project.url}</url>
 
     <developers>

@@ -9,13 +9,17 @@
 [![Gitter][Gitter-image]][Gitter-Url] 
 
 ### Description
-Manually way to generate config metadata for spring boot
+Manually way/library to generate config metadata for spring boot
+
+### Information
+ * [Spring boot configuration-metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)
 
 ### Usage
 * You could generate metadata out of a test like this
 ```java
 public class ConfigMetadataGeneratorTest {
 
+	//GENERATION START
     @Test
     public void generateMetadataFromEnum() throws IOException {
         ConfigurationMetadata metadata = new ConfigurationMetadata("my.group", ExampleEnumConfig.class);
@@ -28,8 +32,9 @@ public class ConfigMetadataGeneratorTest {
 
         Path generated = metadata.generate();
     }
-    
-    //Config for generation test
+	//GENERATION END
+	
+    //Test datasource - so you know where the generated Json is comming from...
     enum ExampleEnumConfig {
 
         //ExampleDefaultConfig
@@ -103,10 +108,6 @@ public class ConfigMetadataGeneratorTest {
   ]
 }
 ```
-
-### Information
- * [Spring boot configuration-metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)
-
 
 ![Config-Metadata-Generator](src/main/resources/banner.png "Config-Metadata-Generator")
 
