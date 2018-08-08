@@ -8,6 +8,7 @@ import berlin.yuna.configmetadata.model.Hints;
 import berlin.yuna.configmetadata.model.Properties;
 import berlin.yuna.configmetadata.model.Values;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -69,7 +70,7 @@ public class MetadataGeneratorTest {
     }
 
     private String pathToString(Path generated) throws IOException {
-        return new String(readAllBytes(generated));
+        return new String(readAllBytes(generated)).replace("\r", "");
     }
 }
 
