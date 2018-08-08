@@ -1,10 +1,11 @@
 package berlin.yuna.configmetadata.logic;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.*;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Objects.requireNonNull;
 
 public abstract class MetaDataGenerator {
@@ -26,7 +27,7 @@ public abstract class MetaDataGenerator {
     }
 
     /**
-     * Generates metadata
+     * Generates metadata in unix format
      *
      * @param content    file content to write
      * @param outputPath custom path to write meta data file
@@ -35,15 +36,19 @@ public abstract class MetaDataGenerator {
      */
     public Path write(final Path outputPath, final String content) throws IOException {
         outputPath.toFile().getParentFile().mkdirs();
-        Files.write(outputPath, content.getBytes());
+        Files.write(outputPath, content.getBytes(UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         return outputPath;
     }
 
     private static String getGeneralMetaDataPath() {
-        ClassLoader classLoader = MetaDataGenerator.class.getClassLoader();
-        String resPath = requireNonNull(classLoader.getResource("")).getPath();
-        resPath = resPath.replace("target/classes", "src/main/resources");
-        resPath = resPath.replace("target/test-classes", "src/main/resources");
-        return resPath;
+        try {
+            ClassLoader classLoader = MetaDataGenerator.class.getClassLoader();
+            String resPath = Paths.get(requireNonNull(classLoader.getResource("")).toURI()).toString();
+            resPath = resPath.replace("target/classes", "src/main/resources");
+            resPath = resPath.replace("target/test-classes", "src/main/resources");
+            return resPath;
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

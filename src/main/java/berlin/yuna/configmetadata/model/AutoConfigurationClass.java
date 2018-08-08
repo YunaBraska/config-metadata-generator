@@ -32,10 +32,10 @@ public class AutoConfigurationClass extends MetaDataGenerator {
 
     public Path generate() throws IOException {
         StringBuilder content = new StringBuilder();
-        content.append("org.springframework.boot.autoconfigure.EnableAutoConfiguration=\\\n");
+        content.append("org.springframework.boot.autoconfigure.EnableAutoConfiguration=\\\r\n");
 
         for (Class clazz : getAutoConfigClasses()) {
-            content.append(clazz.getTypeName()).append("\n");
+            content.append(clazz.getTypeName()).append("\r\n");
         }
         return write(TYPE_AUTO_CONFIG, content.toString());
     }
