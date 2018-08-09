@@ -8,19 +8,23 @@ import berlin.yuna.configmetadata.model.Hints;
 import berlin.yuna.configmetadata.model.Properties;
 import berlin.yuna.configmetadata.model.Values;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 import static berlin.yuna.configmetadata.logic.MetaDataGenerator.TYPE_AUTO_CONFIG;
 import static berlin.yuna.configmetadata.logic.MetaDataGenerator.TYPE_CONFIG_META_DATA;
 import static berlin.yuna.configmetadata.logic.MetaDataGenerator.GENERAL_META_DATA_PATH;
 import static java.nio.file.Files.readAllBytes;
+import static java.util.Objects.requireNonNull;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -36,7 +40,7 @@ public class MetadataGeneratorTest {
     }
 
     @Test
-    public void generateMetadataFromEnum() throws IOException {
+    public void generateMetadataFromEnum() throws IOException, URISyntaxException {
         ConfigurationMetadata metadata = new ConfigurationMetadata("my.group", ExampleEnumConfig.class);
 
         for (ExampleEnumConfig c : ExampleEnumConfig.values()) {
@@ -50,7 +54,7 @@ public class MetadataGeneratorTest {
     }
 
     @Test
-    public void generateAutoConfigMetadata() throws IOException {
+    public void generateAutoConfigMetadata() throws IOException, URISyntaxException {
         AutoConfigurationClass classList = new AutoConfigurationClass(Groups.class, Hints.class);
         classList.newAutoConfigClass(Values.class, Properties.class);
 
@@ -59,10 +63,14 @@ public class MetadataGeneratorTest {
         validateOutput(generated, "spring.factories");
     }
 
-    private void validateOutput(final Path generated, final String fileToCompareWith) throws IOException {
+    private void validateOutput(final Path generated, final String fileToCompareWith) throws IOException, URISyntaxException {
         assertThat(generated, is(notNullValue()));
-        Path original = Paths.get(getClass().getClassLoader().getResource(fileToCompareWith).getPath());
-        assertThat(new String(readAllBytes(generated)), is(equalTo(new String(readAllBytes(original)))));
+        Path original = Paths.get(requireNonNull(getClass().getClassLoader().getResource(fileToCompareWith)).toURI());
+        assertThat(pathToString(generated), is(equalTo(pathToString(original))));
+    }
+
+    private String pathToString(Path generated) throws IOException {
+        return new String(readAllBytes(generated)).replace("\r", "");
     }
 }
 
