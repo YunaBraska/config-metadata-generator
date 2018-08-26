@@ -7,7 +7,7 @@
     <parent>
         <groupId>berlin.yuna</groupId>
         <artifactId>maven-oss-parent</artifactId>
-        <version>0.2.0</version>
+        <version>0.0.3</version>
     </parent>
 
     <groupId>berlin.yuna</groupId>
