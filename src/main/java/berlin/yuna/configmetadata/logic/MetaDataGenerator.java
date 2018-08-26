@@ -1,5 +1,7 @@
 package berlin.yuna.configmetadata.logic;
 
+import berlin.yuna.system.logic.SystemUtil;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,7 +12,7 @@ import static java.util.Objects.requireNonNull;
 
 public abstract class MetaDataGenerator {
 
-    public final static String GENERAL_META_DATA_PATH = getGeneralMetaDataPath();
+    public final static String GENERAL_META_DATA_PATH = SystemUtil.getMainResource(MetaDataGenerator.class).toString();
     public final static String TYPE_CONFIG_META_DATA = "META-INF/spring-configuration-metadata.json";
     public final static String TYPE_AUTO_CONFIG = "META-INF/spring.factories";
 
@@ -38,17 +40,5 @@ public abstract class MetaDataGenerator {
         outputPath.toFile().getParentFile().mkdirs();
         Files.write(outputPath, content.getBytes(UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         return outputPath;
-    }
-
-    private static String getGeneralMetaDataPath() {
-        try {
-            ClassLoader classLoader = MetaDataGenerator.class.getClassLoader();
-            String resPath = Paths.get(requireNonNull(classLoader.getResource("")).toURI()).toString();
-            resPath = resPath.replace("target/classes", "src/main/resources");
-            resPath = resPath.replace("target/test-classes", "src/main/resources");
-            return resPath;
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
