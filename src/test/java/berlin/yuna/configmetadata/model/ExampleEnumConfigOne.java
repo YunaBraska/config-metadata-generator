@@ -1,6 +1,6 @@
 package berlin.yuna.configmetadata.model;
 
-public enum ExampleEnumConfig {
+public enum ExampleEnumConfigOne {
 
     CLUSTER_ID("test-cluster", "Cluster ID (default: test-cluster)"),
     PORT(4222, "Use port for clients (default: 4222)"),
@@ -11,7 +11,7 @@ public enum ExampleEnumConfig {
     private final Object defaultValue;
     private final String description;
 
-    ExampleEnumConfig(Object defaultValue, String description) {
+    ExampleEnumConfigOne(Object defaultValue, String description) {
         this.defaultValue = defaultValue;
         this.description = description;
     }
