@@ -1,34 +1,63 @@
 {
   "hints" : [ ],
   "groups" : [ {
-    "name" : "my.group",
-    "type" : "berlin.yuna.configmetadata.model.ExampleEnumConfig",
-    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+    "name" : "my.group.one",
+    "type" : "berlin.yuna.configmetadata.model.ExampleEnumConfigOne",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigOne"
+  }, {
+    "name" : "my.group.two",
+    "type" : "berlin.yuna.configmetadata.model.ExampleEnumConfigTwo",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigTwo"
   } ],
   "properties" : [ {
-    "name" : "my.group.cluster_id",
+    "name" : "my.group.one.cluster_id",
     "type" : "java.lang.String",
     "description" : "Cluster ID (default: test-cluster)",
-    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigOne"
   }, {
-    "name" : "my.group.port",
+    "name" : "my.group.one.port",
     "type" : "java.lang.Integer",
     "description" : "Use port for clients (default: 4222)",
-    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigOne"
   }, {
-    "name" : "my.group.max_bytes",
+    "name" : "my.group.one.max_bytes",
     "type" : "java.lang.Long",
     "description" : "Max messages total size per channel (0 for unlimited)",
-    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigOne"
   }, {
-    "name" : "my.group.info",
+    "name" : "my.group.one.info",
     "type" : "java.lang.Boolean",
     "description" : "Enable info output",
-    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigOne"
   }, {
-    "name" : "my.group.debug",
+    "name" : "my.group.one.debug",
     "type" : "java.lang.Boolean",
     "description" : "Debug the raw protocol",
-    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfig"
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigOne"
+  }, {
+    "name" : "my.group.two.cluster_id",
+    "type" : "java.lang.String",
+    "description" : "Cluster ID (default: test-cluster)",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigTwo"
+  }, {
+    "name" : "my.group.two.port",
+    "type" : "java.lang.Integer",
+    "description" : "Use port for clients (default: 4222)",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigTwo"
+  }, {
+    "name" : "my.group.two.max_bytes",
+    "type" : "java.lang.Long",
+    "description" : "Max messages total size per channel (0 for unlimited)",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigTwo"
+  }, {
+    "name" : "my.group.two.info",
+    "type" : "java.lang.Boolean",
+    "description" : "Enable info output",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigTwo"
+  }, {
+    "name" : "my.group.two.debug",
+    "type" : "java.lang.Boolean",
+    "description" : "Debug the raw protocol",
+    "sourceType" : "berlin.yuna.configmetadata.model.ExampleEnumConfigTwo"
   } ]
 }

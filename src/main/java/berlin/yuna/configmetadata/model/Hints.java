@@ -9,27 +9,27 @@ public class Hints {
     private String name;
     private List<Values> values = new ArrayList<>();
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public Hints setName(String name) {
+    public Hints name(final String name) {
         this.name = name;
         return this;
     }
 
-    public List<Values> getValues() {
+    public List<Values> values() {
         return values;
     }
 
-    public Hints setValues(List<Values> values) {
+    public Hints values(final List<Values> values) {
         this.values = values;
         return this;
     }
 
     public Values newValues() {
         Values values = new Values();
-        getValues().add(values);
+        values().add(values);
         return values;
     }
 

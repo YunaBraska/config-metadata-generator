@@ -7,20 +7,20 @@ public class Values {
     private String value;
     private String description;
 
-    public String getValue() {
+    public String value() {
         return value;
     }
 
-    public Values setValue(String value) {
+    public Values value(final String value) {
         this.value = value;
         return this;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 
-    public Values description(String description) {
+    public Values description(final String description) {
         this.description = description;
         return this;
     }

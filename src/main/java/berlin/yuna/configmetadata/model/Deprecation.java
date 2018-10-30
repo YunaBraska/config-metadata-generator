@@ -8,29 +8,29 @@ public class Deprecation {
     private String reason;
     private String replacement;
 
-    public String getLevel() {
+    public String level() {
         return level;
     }
 
-    public Deprecation level(String level) {
+    public Deprecation level(final String level) {
         this.level = level;
         return this;
     }
 
-    public String getReason() {
+    public String reason() {
         return reason;
     }
 
-    public Deprecation reason(String reason) {
+    public Deprecation reason(final String reason) {
         this.reason = reason;
         return this;
     }
 
-    public String getReplacement() {
+    public String replacement() {
         return replacement;
     }
 
-    public Deprecation setReplacement(String replacement) {
+    public Deprecation replacement(final String replacement) {
         this.replacement = replacement;
         return this;
     }

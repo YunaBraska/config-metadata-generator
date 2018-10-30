@@ -1,7 +1,9 @@
 package berlin.yuna.configmetadata.model;
 
 import berlin.yuna.configmetadata.logic.MetaDataGenerator;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -27,12 +29,12 @@ public class ConfigurationMetadata extends MetaDataGenerator {
 
     }
 
-    public ConfigurationMetadata(String group, Class sourceType) {
+    public ConfigurationMetadata(final String group, final Class sourceType) {
         Groups groups = new Groups();
         groups.name(group);
         groups.type(sourceType);
         groups.sourceType(sourceType);
-        getGroups().add(groups);
+        groups().add(groups);
     }
 
     /**
@@ -52,62 +54,72 @@ public class ConfigurationMetadata extends MetaDataGenerator {
      * @return written metadata path
      * @throws IOException when the file could not be written
      */
-    public Path generate(Path outputPath) throws IOException {
+    public Path generate(final Path outputPath) throws IOException {
         return write(outputPath, buildJson());
     }
 
-    public ArrayList<Hints> getHints() {
+    public ArrayList<Hints> hints() {
         return hints;
     }
 
-    public void setHints(ArrayList<Hints> hints) {
+    public void hints(final ArrayList<Hints> hints) {
         this.hints = hints;
     }
 
     public Hints newHints() {
         Hints hints = new Hints();
-        getHints().add(hints);
+        hints().add(hints);
         return hints;
     }
 
-    public ArrayList<Groups> getGroups() {
+    public ArrayList<Groups> groups() {
         return groups;
     }
 
-    public void setGroups(ArrayList<Groups> groups) {
+    public void groups(final ArrayList<Groups> groups) {
         this.groups = groups;
     }
 
     public Groups newGroups() {
         Groups groups = new Groups();
-        getGroups().add(groups);
+        groups().add(groups);
         return groups;
     }
 
-    public ArrayList<Properties> getProperties() {
+    public Groups newGroups(final String group, final Class sourceType) {
+        Groups groups = new Groups();
+        groups.name(group);
+        groups.type(sourceType);
+        groups.sourceType(sourceType);
+        groups().add(groups);
+        return groups;
+    }
+
+    public ArrayList<Properties> properties() {
         return properties;
     }
 
-    public void setProperties(ArrayList<Properties> properties) {
+    public void properties(final ArrayList<Properties> properties) {
         this.properties = properties;
     }
 
     public Properties newProperties() {
         Properties properties = new Properties();
-        getProperties().add(properties);
+        properties().add(properties);
         return properties.sourceType(Properties.class);
     }
 
     private String buildJson() throws JsonProcessingException {
-        Groups groups = getGroups().get(0);
+        Groups groups = groups().get(0);
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         String json = mapper.writeValueAsString(this);
 
-        json = json.replace(Properties.class.getTypeName(), groups.getSourceType());
-        json = json.replace("${default.group}", groups.getName());
+        json = json.replace(Properties.class.getTypeName(), groups.sourceType());
+        json = json.replace("${default.group}", groups.name());
         return json;
     }
 

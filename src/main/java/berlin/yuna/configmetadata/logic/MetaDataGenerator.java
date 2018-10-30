@@ -1,9 +1,11 @@
 package berlin.yuna.configmetadata.logic;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Objects.requireNonNull;
@@ -36,6 +38,7 @@ public abstract class MetaDataGenerator {
      */
     public Path write(final Path outputPath, final String content) throws IOException {
         outputPath.toFile().getParentFile().mkdirs();
+        outputPath.toFile().delete();
         Files.write(outputPath, content.getBytes(UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
         return outputPath;
     }

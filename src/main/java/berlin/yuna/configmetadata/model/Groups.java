@@ -10,7 +10,7 @@ public class Groups {
     private String sourceType;
     private String sourceMethod;
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
@@ -19,48 +19,48 @@ public class Groups {
         return this;
     }
 
-    public String getType() {
+    public String type() {
         return type;
     }
 
-    public Groups type(String type) {
+    public Groups type(final String type) {
         this.type = type;
         return this;
     }
 
-    public Groups type(Class type) {
+    public Groups type(final Class type) {
         this.type = type.getTypeName();
         return this;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 
-    public Groups description(String description) {
+    public Groups description(final String description) {
         this.description = description;
         return this;
     }
 
-    public String getSourceType() {
+    public String sourceType() {
         return sourceType;
     }
 
-    public Groups sourceType(String sourceType) {
+    public Groups sourceType(final String sourceType) {
         this.sourceType = sourceType;
         return this;
     }
 
-    public Groups sourceType(Class sourceType) {
+    public Groups sourceType(final Class sourceType) {
         this.sourceType = sourceType.getTypeName();
         return this;
     }
 
-    public String getSourceMethod() {
+    public String sourceMethod() {
         return sourceMethod;
     }
 
-    public void setSourceMethod(String sourceMethod) {
+    public void sourceMethod(final String sourceMethod) {
         this.sourceMethod = sourceMethod;
     }
 

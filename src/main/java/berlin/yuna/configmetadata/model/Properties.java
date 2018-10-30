@@ -12,7 +12,7 @@ public class Properties {
     private Deprecation deprecation;
 
     public Properties() {
-        
+
     }
 
     public Properties(String name, String description, Class type) {
@@ -30,67 +30,72 @@ public class Properties {
         return name;
     }
 
-    public Properties name(String name) {
+    public Properties name(final String name) {
         return name("${default.group}", name);
     }
 
-    public Properties name(String group, String name) {
-        this.name = group + "." + name;
+    public Properties name(final Groups group, final String name) {
+        sourceType(group.sourceType());
+        return name(group.name(), name);
+    }
+
+    public Properties name(final String group, final String name) {
+        this.name = group.trim() + (group.endsWith(".") ? "" : ".") + name;
         return this;
     }
 
-    public String getType() {
+    public String type() {
         return type;
     }
 
-    public Properties type(String type) {
+    public Properties type(final String type) {
         this.type = type;
         return this;
     }
 
-    public Properties type(Class type) {
+    public Properties type(final Class type) {
         this.type = type.getTypeName();
         return this;
     }
 
-    public String getDescription() {
+    public String description() {
         return description;
     }
 
-    public Properties description(String description) {
+    public Properties description(final String description) {
         this.description = description;
         return this;
     }
 
-    public String getSourceType() {
+    public String sourceType() {
         return sourceType;
     }
 
-    public Properties sourceType(String sourceType) {
+    public Properties sourceType(final String sourceType) {
         this.sourceType = sourceType;
         return this;
     }
 
-    public Properties sourceType(Class sourceType) {
+    public Properties sourceType(final Class sourceType) {
         this.sourceType = sourceType.getTypeName();
         return this;
     }
 
-    public Object getDefaultValue() {
+    public Object defaultValue() {
         return defaultValue;
     }
 
-    public Properties defaultValue(Object defaultValue) {
+    public Properties defaultValue(final Object defaultValue) {
         this.defaultValue = defaultValue;
         return this;
     }
 
-    public Deprecation getDeprecation() {
+    public Deprecation deprecation() {
         return deprecation;
     }
 
-    public Properties deprecation(Deprecation deprication) {
-        this.deprecation = deprication;
+    public Properties deprecation(final Deprecation deprecation) {
+        this.deprecation = deprecation;
         return this;
     }
 

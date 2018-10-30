@@ -2,13 +2,13 @@ package berlin.yuna.configmetadata.logic;
 
 import berlin.yuna.configmetadata.model.AutoConfigurationClass;
 import berlin.yuna.configmetadata.model.ConfigurationMetadata;
-import berlin.yuna.configmetadata.model.ExampleEnumConfig;
+import berlin.yuna.configmetadata.model.ExampleEnumConfigOne;
+import berlin.yuna.configmetadata.model.ExampleEnumConfigTwo;
 import berlin.yuna.configmetadata.model.Groups;
 import berlin.yuna.configmetadata.model.Hints;
 import berlin.yuna.configmetadata.model.Properties;
 import berlin.yuna.configmetadata.model.Values;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -18,11 +18,10 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Objects;
 
+import static berlin.yuna.configmetadata.logic.MetaDataGenerator.GENERAL_META_DATA_PATH;
 import static berlin.yuna.configmetadata.logic.MetaDataGenerator.TYPE_AUTO_CONFIG;
 import static berlin.yuna.configmetadata.logic.MetaDataGenerator.TYPE_CONFIG_META_DATA;
-import static berlin.yuna.configmetadata.logic.MetaDataGenerator.GENERAL_META_DATA_PATH;
 import static java.nio.file.Files.readAllBytes;
 import static java.util.Objects.requireNonNull;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -41,13 +40,18 @@ public class MetadataGeneratorTest {
 
     @Test
     public void generateMetadataFromEnum() throws IOException, URISyntaxException {
-        ConfigurationMetadata metadata = new ConfigurationMetadata("my.group", ExampleEnumConfig.class);
+        ConfigurationMetadata metadata = new ConfigurationMetadata("my.group.one", ExampleEnumConfigOne.class);
 
-        for (ExampleEnumConfig c : ExampleEnumConfig.values()) {
-            Class type = c.getDefaultValue().getClass();
-            metadata.newProperties().name(c.name().toLowerCase()).description(c.getDescription()).type(type);
+        for (ExampleEnumConfigOne c : ExampleEnumConfigOne.values()) {
+            metadata.newProperties().name(c.name().toLowerCase()).description(c.getDescription()).type(c.getDefaultValue().getClass());
         }
 
+        Groups groups = metadata.newGroups("my.group.two", ExampleEnumConfigTwo.class);
+        for (ExampleEnumConfigTwo c : ExampleEnumConfigTwo.values()) {
+            metadata.newProperties().name(groups, c.name().toLowerCase()).description(c.getDescription()).type(c.getDefaultValue().getClass());
+        }
+
+        metadata.generate();
         Path generated = metadata.generate();
 
         validateOutput(generated, "spring-configuration-metadata.json");
@@ -70,7 +74,7 @@ public class MetadataGeneratorTest {
     }
 
     private String pathToString(Path generated) throws IOException {
-        return new String(readAllBytes(generated)).replace("\r", "");
+        return new String(readAllBytes(generated)).replaceAll("[\\r\\n]", "\n");
     }
 }
 
