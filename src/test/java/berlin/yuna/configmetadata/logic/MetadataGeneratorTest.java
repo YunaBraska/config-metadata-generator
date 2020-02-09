@@ -34,8 +34,8 @@ public class MetadataGeneratorTest {
 
     @After
     public void tearDown() throws Exception {
-        Files.deleteIfExists(Paths.get(GENERAL_META_DATA_PATH, TYPE_CONFIG_META_DATA));
-        Files.deleteIfExists(Paths.get(GENERAL_META_DATA_PATH, TYPE_AUTO_CONFIG));
+        Files.deleteIfExists(Paths.get(GENERAL_META_DATA_PATH.toString(), TYPE_CONFIG_META_DATA));
+        Files.deleteIfExists(Paths.get(GENERAL_META_DATA_PATH.toString(), TYPE_AUTO_CONFIG));
     }
 
     @Test
