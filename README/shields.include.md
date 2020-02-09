@@ -2,7 +2,7 @@
 
 ![Build][Build-shield] 
 [![Maintainable][Maintainable-image]][Maintainable-Url]
-[![Coverage][Coverage-image]][Coverage-Url]
+![Coverage][Coverage-shield]
 ![Central][Central-shield] 
 ![Tag][Tag-shield]
 ![Issues][Issues-shield] 
@@ -33,3 +33,4 @@
 [Commit-shield]: https://img.shields.io/github/last-commit/YunaBraska/!{project.artifactId}?style=flat-square
 [Label-shield]: https://img.shields.io/badge/Yuna-QueenInside-blueviolet?style=flat-square
 [Build-shield]: https://img.shields.io/travis/YunaBraska/!{project.artifactId}/master?style=flat-square
+[Coverage-shield]: https://img.shields.io/codecov/c/github/YunaBraska/!{project.artifactId}?style=flat-square
