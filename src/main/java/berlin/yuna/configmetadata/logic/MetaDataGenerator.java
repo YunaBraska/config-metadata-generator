@@ -1,18 +1,16 @@
 package berlin.yuna.configmetadata.logic;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static java.util.Objects.requireNonNull;
 
 public abstract class MetaDataGenerator {
 
-    public final static String GENERAL_META_DATA_PATH = getGeneralMetaDataPath();
+    public final static Path GENERAL_META_DATA_PATH = getGeneralMetaDataPath();
     public final static String TYPE_CONFIG_META_DATA = "META-INF/spring-configuration-metadata.json";
     public final static String TYPE_AUTO_CONFIG = "META-INF/spring.factories";
 
@@ -25,7 +23,7 @@ public abstract class MetaDataGenerator {
      * @throws IOException when the file could not be written
      */
     public Path write(final String metaDataType, final String content) throws IOException {
-        return write(Paths.get(GENERAL_META_DATA_PATH, metaDataType), content);
+        return write(Paths.get(GENERAL_META_DATA_PATH.toString(), metaDataType), content);
     }
 
     /**
@@ -37,21 +35,13 @@ public abstract class MetaDataGenerator {
      * @throws IOException when the file could not be written
      */
     public Path write(final Path outputPath, final String content) throws IOException {
-        outputPath.toFile().getParentFile().mkdirs();
-        outputPath.toFile().delete();
-        Files.write(outputPath, content.getBytes(UTF_8), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        Files.createDirectories(outputPath.getParent());
+        Files.deleteIfExists(outputPath);
+        Files.writeString(outputPath, content);
         return outputPath;
     }
 
-    private static String getGeneralMetaDataPath() {
-        try {
-            ClassLoader classLoader = MetaDataGenerator.class.getClassLoader();
-            String resPath = Paths.get(requireNonNull(classLoader.getResource("")).toURI()).toString();
-            resPath = resPath.replace("target/classes", "src/main/resources");
-            resPath = resPath.replace("target/test-classes", "src/main/resources");
-            return resPath;
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
+    private static Path getGeneralMetaDataPath() {
+        return Paths.get(System.getProperty("user.dir"), "src/main/resources");
     }
 }
