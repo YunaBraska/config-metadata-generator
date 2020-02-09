@@ -1,5 +1,8 @@
 language: java
+jdk:
+  - openjdk12
 sudo: false
+install: sh build.sh
 script: mvn clean verify
 
 after_success:
