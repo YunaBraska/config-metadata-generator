@@ -2,8 +2,7 @@ language: java
 jdk:
   - openjdk12
 sudo: false
-install: sh build.sh
-script: mvn clean verify
+script: sh scripts/test.sh
 
 after_success:
   - bash <(curl -s https://codecov.io/bash) -t 95613817-25e8-4c02-89ca-ab6f67c62312
