@@ -1,39 +1,9 @@
-# config-metadata-generator
+[var target]: # (/)
+
+# !{project.name}
 *Manually way/library to generate config metadata for spring boot*
 
-![Build][Build-shield] 
-[![Maintainable][Maintainable-image]][Maintainable-Url]
-[![Coverage][Coverage-image]][Coverage-Url]
-![Central][Central-shield] 
-![Tag][Tag-shield]
-![Issues][Issues-shield] 
-![Commit][Commit-shield] 
-![Size][Size-shield] 
-![Dependency][Dependency-shield]
-![License][License-shield]
-![Label][Label-shield]
-
-[License-Url]: https://www.apache.org/licenses/LICENSE-2.0
-[Build-Status-Url]: https://travis-ci.org/YunaBraska/config-metadata-generator
-[Build-Status-Image]: https://travis-ci.org/YunaBraska/config-metadata-generator.svg?branch=master
-[Coverage-Url]: https://codecov.io/gh/YunaBraska/config-metadata-generator?branch=master
-[Coverage-image]: https://img.shields.io/codecov/c/github/YunaBraska/config-metadata-generator?style=flat-square
-[Maintainable-Url]: https://codeclimate.com/github/YunaBraska/config-metadata-generator/maintainability
-[Maintainable-image]: https://img.shields.io/codeclimate/maintainability/YunaBraska/config-metadata-generator?style=flat-square
-[Javadoc-url]: http://javadoc.io/doc/berlin.yuna/config-metadata-generator
-[Javadoc-image]: http://javadoc.io/badge/berlin.yuna/config-metadata-generator.svg
-[Gitter-Url]: https://gitter.im/nats-streaming-server-embedded/Lobby
-[Gitter-image]: https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg
-
-[Dependency-shield]: https://img.shields.io/librariesio/github/YunaBraska/config-metadata-generator?style=flat-square
-[Tag-shield]: https://img.shields.io/github/v/tag/YunaBraska/config-metadata-generator?style=flat-square
-[Central-shield]: https://img.shields.io/maven-central/v/berlin.yuna/config-metadata-generator?style=flat-square
-[Size-shield]: https://img.shields.io/github/repo-size/YunaBraska/config-metadata-generator?style=flat-square
-[Issues-shield]: https://img.shields.io/github/issues/YunaBraska/config-metadata-generator?style=flat-square
-[License-shield]: https://img.shields.io/github/license/YunaBraska/config-metadata-generator?style=flat-square
-[Commit-shield]: https://img.shields.io/github/last-commit/YunaBraska/config-metadata-generator?style=flat-square
-[Label-shield]: https://img.shields.io/badge/Yuna-QueenInside-blueviolet?style=flat-square
-[Build-shield]: https://img.shields.io/travis/YunaBraska/config-metadata-generator/master?style=flat-square
+[include]: # (/README/shields.include.md)
 
 ### Information
  * [Spring boot configuration-metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)
