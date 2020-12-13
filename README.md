@@ -14,12 +14,12 @@
 [![Size][size_shield]][size_shield]
 ![Label][label_shield]
 
-[build_shield]: https://img.shields.io/travis/YunaBraska/config-metadata-generator/master?style=flat-square
-[build_link]: https://travis-ci.org/YunaBraska/config-metadata-generator
+[build_shield]: https://github.com/YunaBraska/config-metadata-generator/workflows/JAVA_CI/badge.svg
+[build_link]: https://github.com/YunaBraska/config-metadata-generator/actions?query=workflow%3AJAVA_CI
 [maintainable_shield]: https://img.shields.io/codeclimate/maintainability/YunaBraska/config-metadata-generator?style=flat-square
 [maintainable_link]: https://codeclimate.com/github/YunaBraska/config-metadata-generator/maintainability
-[coverage_shield]: https://img.shields.io/codecov/c/github/YunaBraska/config-metadata-generator?style=flat-square
-[coverage_link]: https://codecov.io/gh/YunaBraska/config-metadata-generator?branch=master
+[coverage_shield]: https://img.shields.io/codeclimate/coverage/YunaBraska/config-metadata-generator?style=flat-square
+[coverage_link]: https://codeclimate.com/github/YunaBraska/config-metadata-generator/test_coverage
 [issues_shield]: https://img.shields.io/github/issues/YunaBraska/config-metadata-generator?style=flat-square
 [issues_link]: https://github.com/YunaBraska/config-metadata-generator/commits/master
 [commit_shield]: https://img.shields.io/github/last-commit/YunaBraska/config-metadata-generator?style=flat-square
