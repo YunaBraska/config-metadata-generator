@@ -8,10 +8,9 @@ import berlin.yuna.configmetadata.model.Groups;
 import berlin.yuna.configmetadata.model.Hints;
 import berlin.yuna.configmetadata.model.Properties;
 import berlin.yuna.configmetadata.model.Values;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -29,17 +28,17 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-@RunWith(MockitoJUnitRunner.class)
-public class MetadataGeneratorTest {
+@Tag("UnitTest")
+class MetadataGeneratorTest {
 
-    @After
-    public void tearDown() throws Exception {
+    @AfterEach
+    void tearDown() throws Exception {
         Files.deleteIfExists(Paths.get(GENERAL_META_DATA_PATH.toString(), TYPE_CONFIG_META_DATA));
         Files.deleteIfExists(Paths.get(GENERAL_META_DATA_PATH.toString(), TYPE_AUTO_CONFIG));
     }
 
     @Test
-    public void generateMetadataFromEnum() throws IOException, URISyntaxException {
+    void generateMetadataFromEnum() throws IOException, URISyntaxException {
         ConfigurationMetadata metadata = new ConfigurationMetadata("my.group.one", ExampleEnumConfigOne.class);
 
         for (ExampleEnumConfigOne c : ExampleEnumConfigOne.values()) {
@@ -58,7 +57,7 @@ public class MetadataGeneratorTest {
     }
 
     @Test
-    public void generateAutoConfigMetadata() throws IOException, URISyntaxException {
+    void generateAutoConfigMetadata() throws IOException, URISyntaxException {
         AutoConfigurationClass classList = new AutoConfigurationClass(Groups.class, Hints.class);
         classList.newAutoConfigClass(Values.class, Properties.class);
 
