@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-
-import static java.nio.charset.StandardCharsets.UTF_8;
 
 public abstract class MetaDataGenerator {
 
@@ -37,7 +34,7 @@ public abstract class MetaDataGenerator {
     public Path write(final Path outputPath, final String content) throws IOException {
         Files.createDirectories(outputPath.getParent());
         Files.deleteIfExists(outputPath);
-        Files.writeString(outputPath, content);
+        Files.write(outputPath, content.getBytes());
         return outputPath;
     }
 
