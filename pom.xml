@@ -6,7 +6,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>0.6.54</version>
+    <version>0.6.55</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
