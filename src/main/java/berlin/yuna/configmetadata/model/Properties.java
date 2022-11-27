@@ -2,6 +2,7 @@ package berlin.yuna.configmetadata.model;
 
 import java.util.Objects;
 
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class Properties {
 
     private String name;
@@ -15,11 +16,11 @@ public class Properties {
 
     }
 
-    public Properties(String name, String description, Class type) {
+    public Properties(final String name, final String description, final Class<?> type) {
         this(name, description, type, Properties.class);
     }
 
-    public Properties(String name, String description, Class type, Class sourceType) {
+    public Properties(final String name, final String description, final Class<?> type, final Class<?> sourceType) {
         name(name);
         description(description);
         type(type);
@@ -53,7 +54,7 @@ public class Properties {
         return this;
     }
 
-    public Properties type(final Class type) {
+    public Properties type(final Class<?> type) {
         this.type = type.getTypeName();
         return this;
     }
@@ -76,7 +77,7 @@ public class Properties {
         return this;
     }
 
-    public Properties sourceType(final Class sourceType) {
+    public Properties sourceType(final Class<?> sourceType) {
         this.sourceType = sourceType.getTypeName();
         return this;
     }
@@ -100,10 +101,10 @@ public class Properties {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Properties that = (Properties) o;
+        final Properties that = (Properties) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(type, that.type) &&
                 Objects.equals(description, that.description) &&

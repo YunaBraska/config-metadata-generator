@@ -13,6 +13,7 @@
 [![Javadoc][javadoc_shield]][javadoc_link]
 [![Size][size_shield]][size_shield]
 ![Label][label_shield]
+![Label][java_version]
 
 [build_shield]: https://github.com/YunaBraska/config-metadata-generator/workflows/JAVA_CI/badge.svg
 [build_link]: https://github.com/YunaBraska/config-metadata-generator/actions?query=workflow%3AJAVA_CI
@@ -38,6 +39,7 @@
 [label_shield]: https://img.shields.io/badge/Yuna-QueenInside-blueviolet?style=flat-square
 [gitter_shield]: https://img.shields.io/gitter/room/YunaBraska/nats-streaming-server-embedded?style=flat-square
 [gitter_link]: https://gitter.im/nats-streaming-server-embedded/Lobby
+[java_version]: https://img.shields.io/badge/java-17-blueviolet?style=flat-square
 
 ### Information
  * [Spring boot configuration-metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)
@@ -65,15 +67,16 @@ berlin.yuna.configmetadata.model.Properties
 
 ### Usage Configuration Metadata
 * You could generate metadata out of a test like this
+
 ```java
 public class ConfigMetadataGeneratorTest {
 
-	@Test
+    @Test
     public void generateMetadataFromEnum() throws IOException {
-        ConfigurationMetadata metadata = new ConfigurationMetadata("my.group", ExampleEnumConfig.class);
+        final ConfigurationMetadata metadata = new ConfigurationMetadata("my.group", ExampleEnumConfig.class);
 
         for (ExampleEnumConfig c : ExampleEnumConfig.values()) {
-            Class type = c.getDefaultValue().getClass();
+            final Class type = c.getDefaultValue().getClass();
             metadata.newProperties().name(c.name().toLowerCase()).description(c.getDescription()).type(type);
         }
 
@@ -82,6 +85,7 @@ public class ConfigMetadataGeneratorTest {
 }
 ```
 * Test config enum class behind the scenes
+
 ```java
 public enum ExampleEnumConfig {
 
@@ -94,7 +98,7 @@ public enum ExampleEnumConfig {
     private final Object defaultValue;
     private final String description;
 
-    ExampleEnumConfig(Object defaultValue, String description) {
+    ExampleEnumConfig(final Object defaultValue, final String description) {
         this.defaultValue = defaultValue;
         this.description = description;
     }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class Hints {
 
     private String name;
@@ -28,16 +29,16 @@ public class Hints {
     }
 
     public Values newValues() {
-        Values values = new Values();
-        values().add(values);
-        return values;
+        final Values result = new Values();
+        values().add(result);
+        return result;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Hints hints = (Hints) o;
+        final Hints hints = (Hints) o;
         return Objects.equals(name, hints.name) &&
                 Objects.equals(values, hints.values);
     }

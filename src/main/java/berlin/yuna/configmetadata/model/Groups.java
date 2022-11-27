@@ -2,6 +2,7 @@ package berlin.yuna.configmetadata.model;
 
 import java.util.Objects;
 
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class Groups {
 
     private String name;
@@ -14,7 +15,7 @@ public class Groups {
         return name;
     }
 
-    public Groups name(String name) {
+    public Groups name(final String name) {
         this.name = name;
         return this;
     }
@@ -28,7 +29,7 @@ public class Groups {
         return this;
     }
 
-    public Groups type(final Class type) {
+    public Groups type(final Class<?> type) {
         this.type = type.getTypeName();
         return this;
     }
@@ -51,7 +52,7 @@ public class Groups {
         return this;
     }
 
-    public Groups sourceType(final Class sourceType) {
+    public Groups sourceType(final Class<?> sourceType) {
         this.sourceType = sourceType.getTypeName();
         return this;
     }
@@ -65,10 +66,10 @@ public class Groups {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Groups groups = (Groups) o;
+        final Groups groups = (Groups) o;
         return Objects.equals(name, groups.name) &&
                 Objects.equals(type, groups.type) &&
                 Objects.equals(description, groups.description) &&

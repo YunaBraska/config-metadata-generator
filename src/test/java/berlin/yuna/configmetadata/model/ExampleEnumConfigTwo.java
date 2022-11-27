@@ -11,7 +11,7 @@ public enum ExampleEnumConfigTwo {
     private final Object defaultValue;
     private final String description;
 
-    ExampleEnumConfigTwo(Object defaultValue, String description) {
+    ExampleEnumConfigTwo(final Object defaultValue, final String description) {
         this.defaultValue = defaultValue;
         this.description = description;
     }

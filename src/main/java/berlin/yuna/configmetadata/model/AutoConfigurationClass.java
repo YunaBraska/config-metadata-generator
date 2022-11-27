@@ -10,41 +10,42 @@ import java.util.Objects;
 
 import static java.util.Arrays.asList;
 
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class AutoConfigurationClass extends MetaDataGenerator {
 
-    private List<Class> autoConfigClasses = new ArrayList<>();
+    private final List<Class<?>> autoConfigClasses = new ArrayList<>();
 
     public AutoConfigurationClass() {
     }
 
-    public AutoConfigurationClass(Class... autoConfigClasses) {
+    public AutoConfigurationClass(final Class<?>... autoConfigClasses) {
         this.autoConfigClasses.addAll(new ArrayList<>(asList(autoConfigClasses)));
     }
 
-    public List<Class> getAutoConfigClasses() {
+    public List<Class<?>> getAutoConfigClasses() {
         return autoConfigClasses;
     }
 
-    public AutoConfigurationClass newAutoConfigClass(Class... autoConfigClasses) {
+    public AutoConfigurationClass newAutoConfigClass(final Class<?>... autoConfigClasses) {
         this.autoConfigClasses.addAll(new ArrayList<>(asList(autoConfigClasses)));
         return this;
     }
 
     public Path generate() throws IOException {
-        StringBuilder content = new StringBuilder();
+        final StringBuilder content = new StringBuilder();
         content.append("org.springframework.boot.autoconfigure.EnableAutoConfiguration=\\\n");
 
-        for (Class clazz : getAutoConfigClasses()) {
+        for (Class<?> clazz : getAutoConfigClasses()) {
             content.append(clazz.getTypeName()).append("\n");
         }
         return write(TYPE_AUTO_CONFIG, content.toString());
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AutoConfigurationClass that = (AutoConfigurationClass) o;
+        final AutoConfigurationClass that = (AutoConfigurationClass) o;
         return Objects.equals(autoConfigClasses, that.autoConfigClasses);
     }
 

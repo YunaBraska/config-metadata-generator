@@ -39,40 +39,40 @@ class MetadataGeneratorTest {
 
     @Test
     void generateMetadataFromEnum() throws IOException, URISyntaxException {
-        ConfigurationMetadata metadata = new ConfigurationMetadata("my.group.one", ExampleEnumConfigOne.class);
+        final ConfigurationMetadata metadata = new ConfigurationMetadata("my.group.one", ExampleEnumConfigOne.class);
 
         for (ExampleEnumConfigOne c : ExampleEnumConfigOne.values()) {
             metadata.newProperties().name(c.name().toLowerCase()).description(c.getDescription()).type(c.getDefaultValue().getClass());
         }
 
-        Groups groups = metadata.newGroups("my.group.two", ExampleEnumConfigTwo.class);
+        final Groups groups = metadata.newGroups("my.group.two", ExampleEnumConfigTwo.class);
         for (ExampleEnumConfigTwo c : ExampleEnumConfigTwo.values()) {
             metadata.newProperties().name(groups, c.name().toLowerCase()).description(c.getDescription()).type(c.getDefaultValue().getClass());
         }
 
         metadata.generate();
-        Path generated = metadata.generate();
+        final Path generated = metadata.generate();
 
         validateOutput(generated, "spring-configuration-metadata.json");
     }
 
     @Test
     void generateAutoConfigMetadata() throws IOException, URISyntaxException {
-        AutoConfigurationClass classList = new AutoConfigurationClass(Groups.class, Hints.class);
+        final AutoConfigurationClass classList = new AutoConfigurationClass(Groups.class, Hints.class);
         classList.newAutoConfigClass(Values.class, Properties.class);
 
-        Path generated = classList.generate();
+        final Path generated = classList.generate();
 
         validateOutput(generated, "spring.factories");
     }
 
     private void validateOutput(final Path generated, final String fileToCompareWith) throws IOException, URISyntaxException {
         assertThat(generated, is(notNullValue()));
-        Path original = Paths.get(requireNonNull(getClass().getClassLoader().getResource(fileToCompareWith)).toURI());
+        final Path original = Paths.get(requireNonNull(getClass().getClassLoader().getResource(fileToCompareWith)).toURI());
         assertThat(pathToString(generated), is(equalTo(pathToString(original))));
     }
 
-    private String pathToString(Path generated) throws IOException {
+    private String pathToString(final Path generated) throws IOException {
         return new String(readAllBytes(generated)).replaceAll("[\\r\\n]", "\n");
     }
 }

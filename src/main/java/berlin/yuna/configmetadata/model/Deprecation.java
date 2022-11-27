@@ -2,6 +2,7 @@ package berlin.yuna.configmetadata.model;
 
 import java.util.Objects;
 
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class Deprecation {
 
     private String level;
@@ -36,10 +37,10 @@ public class Deprecation {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Deprecation that = (Deprecation) o;
+        final Deprecation that = (Deprecation) o;
         return Objects.equals(level, that.level) &&
                 Objects.equals(reason, that.reason) &&
                 Objects.equals(replacement, that.replacement);

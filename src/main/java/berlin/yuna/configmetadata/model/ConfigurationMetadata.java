@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -20,21 +21,22 @@ import java.util.Objects;
  *
  * @see <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html">Spring boot configuration-metadata</a>
  */
+@SuppressWarnings({"UnusedReturnValue", "unused"})
 public class ConfigurationMetadata extends MetaDataGenerator {
-    private ArrayList<Hints> hints = new ArrayList<>();
-    private ArrayList<Groups> groups = new ArrayList<>();
-    private ArrayList<Properties> properties = new ArrayList<>();
+    private List<Hints> hints = new ArrayList<>();
+    private List<Groups> groups = new ArrayList<>();
+    private List<Properties> properties = new ArrayList<>();
 
     public ConfigurationMetadata() {
 
     }
 
-    public ConfigurationMetadata(final String group, final Class sourceType) {
-        Groups groups = new Groups();
-        groups.name(group);
-        groups.type(sourceType);
-        groups.sourceType(sourceType);
-        groups().add(groups);
+    public ConfigurationMetadata(final String group, final Class<?> sourceType) {
+        final Groups result = new Groups();
+        result.name(group);
+        result.type(sourceType);
+        result.sourceType(sourceType);
+        groups().add(result);
     }
 
     /**
@@ -58,76 +60,76 @@ public class ConfigurationMetadata extends MetaDataGenerator {
         return write(outputPath, buildJson());
     }
 
-    public ArrayList<Hints> hints() {
+    public List<Hints> hints() {
         return hints;
     }
 
-    public void hints(final ArrayList<Hints> hints) {
+    public void hints(final List<Hints> hints) {
         this.hints = hints;
     }
 
     public Hints newHints() {
-        Hints hints = new Hints();
-        hints().add(hints);
-        return hints;
+        final Hints result  = new Hints();
+        hints().add(result);
+        return result;
     }
 
-    public ArrayList<Groups> groups() {
+    public List<Groups> groups() {
         return groups;
     }
 
-    public void groups(final ArrayList<Groups> groups) {
+    public void groups(final List<Groups> groups) {
         this.groups = groups;
     }
 
     public Groups newGroups() {
-        Groups groups = new Groups();
-        groups().add(groups);
-        return groups;
+        final Groups result = new Groups();
+        groups().add(result);
+        return result;
     }
 
-    public Groups newGroups(final String group, final Class sourceType) {
-        Groups groups = new Groups();
-        groups.name(group);
-        groups.type(sourceType);
-        groups.sourceType(sourceType);
-        groups().add(groups);
-        return groups;
+    public Groups newGroups(final String group, final Class<?> sourceType) {
+        final Groups result = new Groups();
+        result.name(group);
+        result.type(sourceType);
+        result.sourceType(sourceType);
+        groups().add(result);
+        return result;
     }
 
-    public ArrayList<Properties> properties() {
+    public List<Properties> properties() {
         return properties;
     }
 
-    public void properties(final ArrayList<Properties> properties) {
+    public void properties(final List<Properties> properties) {
         this.properties = properties;
     }
 
     public Properties newProperties() {
-        Properties properties = new Properties();
-        properties().add(properties);
-        return properties.sourceType(Properties.class);
+        final Properties result = new Properties();
+        properties().add(result);
+        return result.sourceType(Properties.class);
     }
 
     private String buildJson() throws JsonProcessingException {
-        Groups groups = groups().get(0);
+        final Groups result = groups().get(0);
 
-        ObjectMapper mapper = new ObjectMapper();
+        final ObjectMapper mapper = new ObjectMapper();
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         String json = mapper.writeValueAsString(this);
 
-        json = json.replace(Properties.class.getTypeName(), groups.sourceType());
-        json = json.replace("${default.group}", groups.name());
+        json = json.replace(Properties.class.getTypeName(), result.sourceType());
+        json = json.replace("${default.group}", result.name());
         return json;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ConfigurationMetadata that = (ConfigurationMetadata) o;
+        final ConfigurationMetadata that = (ConfigurationMetadata) o;
         return Objects.equals(hints, that.hints) &&
                 Objects.equals(groups, that.groups) &&
                 Objects.equals(properties, that.properties);
