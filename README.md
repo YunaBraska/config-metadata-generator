@@ -15,45 +15,24 @@
 ![Label][label_shield]
 ![Label][java_version]
 
-[build_shield]: https://github.com/YunaBraska/config-metadata-generator/workflows/JAVA_CI/badge.svg
-[build_link]: https://github.com/YunaBraska/config-metadata-generator/actions?query=workflow%3AJAVA_CI
-[maintainable_shield]: https://img.shields.io/codeclimate/maintainability/YunaBraska/config-metadata-generator?style=flat-square
-[maintainable_link]: https://codeclimate.com/github/YunaBraska/config-metadata-generator/maintainability
-[coverage_shield]: https://img.shields.io/codeclimate/coverage/YunaBraska/config-metadata-generator?style=flat-square
-[coverage_link]: https://codeclimate.com/github/YunaBraska/config-metadata-generator/test_coverage
-[issues_shield]: https://img.shields.io/github/issues/YunaBraska/config-metadata-generator?style=flat-square
-[issues_link]: https://github.com/YunaBraska/config-metadata-generator/commits/master
-[commit_shield]: https://img.shields.io/github/last-commit/YunaBraska/config-metadata-generator?style=flat-square
-[commit_link]: https://github.com/YunaBraska/config-metadata-generator/issues
-[license_shield]: https://img.shields.io/github/license/YunaBraska/config-metadata-generator?style=flat-square
-[license_link]: https://github.com/YunaBraska/config-metadata-generator/blob/master/LICENSE
-[dependency_shield]: https://img.shields.io/librariesio/github/YunaBraska/config-metadata-generator?style=flat-square
-[dependency_link]: https://libraries.io/github/YunaBraska/config-metadata-generator
-[central_shield]: https://img.shields.io/maven-central/v/berlin.yuna/config-metadata-generator?style=flat-square
-[central_link]:https://search.maven.org/artifact/berlin.yuna/config-metadata-generator
-[tag_shield]: https://img.shields.io/github/v/tag/YunaBraska/config-metadata-generator?style=flat-square
-[tag_link]: https://github.com/YunaBraska/config-metadata-generator/releases
-[javadoc_shield]: https://javadoc.io/badge2/berlin.yuna/config-metadata-generator/javadoc.svg?style=flat-square
-[javadoc_link]: https://javadoc.io/doc/berlin.yuna/config-metadata-generator
-[size_shield]: https://img.shields.io/github/repo-size/YunaBraska/config-metadata-generator?style=flat-square
-[label_shield]: https://img.shields.io/badge/Yuna-QueenInside-blueviolet?style=flat-square
-[gitter_shield]: https://img.shields.io/gitter/room/YunaBraska/nats-streaming-server-embedded?style=flat-square
-[gitter_link]: https://gitter.im/nats-streaming-server-embedded/Lobby
-[java_version]: https://img.shields.io/badge/java-17-blueviolet?style=flat-square
-
 ### Information
  * [Spring boot configuration-metadata](https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html)
 
 ### Usage auto configuration classes
 * You could generate auto configuration classes out of a test like this
+
 ```java
-@Test
-public void generateAutoConfigMetadata() throws IOException {
-    AutoConfigurationClass classList = new AutoConfigurationClass(Groups.class, Hints.class);
-    classList.newAutoConfigClass(Values.class, Properties.class);
 
-    Path generated = classList.generate();
+class MetadataGeneratorTest {
 
+    @Test
+    public void generateAutoConfigMetadata() {
+        final AutoConfigurationClass classList = new AutoConfigurationClass(Groups.class, Hints.class);
+        classList.newAutoConfigClass(Values.class, Properties.class);
+
+        final Path generated = classList.generate();
+
+    }
 }
 ```
 * Output from example:
@@ -72,11 +51,11 @@ berlin.yuna.configmetadata.model.Properties
 public class ConfigMetadataGeneratorTest {
 
     @Test
-    public void generateMetadataFromEnum() throws IOException {
+    public void generateMetadataFromEnum() {
         final ConfigurationMetadata metadata = new ConfigurationMetadata("my.group", ExampleEnumConfig.class);
 
         for (ExampleEnumConfig c : ExampleEnumConfig.values()) {
-            final Class type = c.getDefaultValue().getClass();
+            final Class<?> type = c.getDefaultValue().getClass();
             metadata.newProperties().name(c.name().toLowerCase()).description(c.getDescription()).type(type);
         }
 
@@ -151,3 +130,30 @@ public enum ExampleEnumConfig {
 ```
 
 ![Config-Metadata-Generator](src/main/resources/banner.png "Config-Metadata-Generator")
+
+
+[build_shield]: https://github.com/YunaBraska/config-metadata-generator/workflows/JAVA_CI/badge.svg
+[build_link]: https://github.com/YunaBraska/config-metadata-generator/actions?query=workflow%3AJAVA_CI
+[maintainable_shield]: https://img.shields.io/codeclimate/maintainability/YunaBraska/config-metadata-generator?style=flat-square
+[maintainable_link]: https://codeclimate.com/github/YunaBraska/config-metadata-generator/maintainability
+[coverage_shield]: https://img.shields.io/codeclimate/coverage/YunaBraska/config-metadata-generator?style=flat-square
+[coverage_link]: https://codeclimate.com/github/YunaBraska/config-metadata-generator/test_coverage
+[issues_shield]: https://img.shields.io/github/issues/YunaBraska/config-metadata-generator?style=flat-square
+[issues_link]: https://github.com/YunaBraska/config-metadata-generator/commits/master
+[commit_shield]: https://img.shields.io/github/last-commit/YunaBraska/config-metadata-generator?style=flat-square
+[commit_link]: https://github.com/YunaBraska/config-metadata-generator/issues
+[license_shield]: https://img.shields.io/github/license/YunaBraska/config-metadata-generator?style=flat-square
+[license_link]: https://github.com/YunaBraska/config-metadata-generator/blob/master/LICENSE
+[dependency_shield]: https://img.shields.io/librariesio/github/YunaBraska/config-metadata-generator?style=flat-square
+[dependency_link]: https://libraries.io/github/YunaBraska/config-metadata-generator
+[central_shield]: https://img.shields.io/maven-central/v/berlin.yuna/config-metadata-generator?style=flat-square
+[central_link]:https://search.maven.org/artifact/berlin.yuna/config-metadata-generator
+[tag_shield]: https://img.shields.io/github/v/tag/YunaBraska/config-metadata-generator?style=flat-square
+[tag_link]: https://github.com/YunaBraska/config-metadata-generator/releases
+[javadoc_shield]: https://javadoc.io/badge2/berlin.yuna/config-metadata-generator/javadoc.svg?style=flat-square
+[javadoc_link]: https://javadoc.io/doc/berlin.yuna/config-metadata-generator
+[size_shield]: https://img.shields.io/github/repo-size/YunaBraska/config-metadata-generator?style=flat-square
+[label_shield]: https://img.shields.io/badge/Yuna-QueenInside-blueviolet?style=flat-square
+[gitter_shield]: https://img.shields.io/gitter/room/YunaBraska/nats-streaming-server-embedded?style=flat-square
+[gitter_link]: https://gitter.im/nats-streaming-server-embedded/Lobby
+[java_version]: https://img.shields.io/badge/java-11-blueviolet?style=flat-square

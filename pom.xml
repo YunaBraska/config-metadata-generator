@@ -34,7 +34,7 @@
     </licenses>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <project.encoding>UTF-8</project.encoding>
         <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
