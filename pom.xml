@@ -6,7 +6,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>0.6.163</version>
+    <version>0.6.164</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -41,7 +41,7 @@
         <!-- VERSIONS -->
         <hamcrest-core.version>3.0</hamcrest-core.version>
         <mockito-core.version>5.14.2</mockito-core.version>
-        <junit-jupiter.version>5.11.3</junit-jupiter.version>
+        <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <jackson-databind.version>2.18.2</jackson-databind.version>
         <command-line-util.version>2.1.38</command-line-util.version>
         <!-- VERSIONS BUILD -->
