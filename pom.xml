@@ -6,7 +6,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>0.6.164</version>
+    <version>0.6.165</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -43,7 +43,7 @@
         <mockito-core.version>5.14.2</mockito-core.version>
         <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <jackson-databind.version>2.18.2</jackson-databind.version>
-        <command-line-util.version>2.1.38</command-line-util.version>
+        <command-line-util.version>2.1.39</command-line-util.version>
         <!-- VERSIONS BUILD -->
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
