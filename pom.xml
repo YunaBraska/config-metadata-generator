@@ -6,7 +6,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>0.6.173</version>
+    <version>0.6.174</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -43,7 +43,7 @@
         <mockito-core.version>5.16.1</mockito-core.version>
         <junit-jupiter.version>5.12.1</junit-jupiter.version>
         <jackson-databind.version>2.18.3</jackson-databind.version>
-        <command-line-util.version>2.1.43</command-line-util.version>
+        <command-line-util.version>2.1.44</command-line-util.version>
         <!-- VERSIONS BUILD -->
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
@@ -52,8 +52,8 @@
         <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>3.5.2</maven-failsafe-plugin.version>
-        <maven-surefire-plugin.version>3.5.2</maven-surefire-plugin.version>
+        <maven-failsafe-plugin.version>3.5.3</maven-failsafe-plugin.version>
+        <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
         <config-metadata-generator.version>0.5.2</config-metadata-generator.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
     </properties>
