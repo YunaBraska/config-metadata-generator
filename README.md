@@ -156,4 +156,4 @@ public enum ExampleEnumConfig {
 [label_shield]: https://img.shields.io/badge/Yuna-QueenInside-blueviolet?style=flat-square
 [gitter_shield]: https://img.shields.io/gitter/room/YunaBraska/nats-streaming-server-embedded?style=flat-square
 [gitter_link]: https://gitter.im/nats-streaming-server-embedded/Lobby
-[java_version]: https://img.shields.io/badge/java-11-blueviolet?style=flat-square
+[java_version]: https://img.shields.io/badge/java-17-blueviolet?style=flat-square
