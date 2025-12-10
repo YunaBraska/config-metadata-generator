@@ -6,7 +6,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>2025.11.3060510</version>
+    <version>2025.12.3440513</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -47,7 +47,7 @@
         <!-- TEST -->
         <junit.version>6.0.1</junit.version>
         <hamcrest-core.version>3.0</hamcrest-core.version>
-        <mockito-core.version>5.20.0</mockito-core.version>
+        <mockito-core.version>5.21.0</mockito-core.version>
         <junit-launcher.version>6.0.1</junit-launcher.version>
 
         <!-- BUILD -->
