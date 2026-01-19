@@ -6,7 +6,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>2026.01.0070517</version>
+    <version>2026.01.0190524</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -41,7 +41,7 @@
         <project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 
         <!-- PROD -->
-        <jackson-databind.version>2.20.1</jackson-databind.version>
+        <jackson-databind.version>2.21.0</jackson-databind.version>
         <command-line-util.version>2026.01.0070438</command-line-util.version>
 
         <!-- TEST -->
