@@ -6,7 +6,7 @@
 
     <groupId>berlin.yuna</groupId>
     <artifactId>config-metadata-generator</artifactId>
-    <version>2026.01.0190524</version>
+    <version>2026.02.0330556</version>
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
@@ -42,7 +42,7 @@
 
         <!-- PROD -->
         <jackson-databind.version>2.21.0</jackson-databind.version>
-        <command-line-util.version>2026.01.0070438</command-line-util.version>
+        <command-line-util.version>2026.02.0330522</command-line-util.version>
 
         <!-- TEST -->
         <junit.version>6.0.2</junit.version>
@@ -55,7 +55,7 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <jacoco-maven-plugin.version>0.8.14</jacoco-maven-plugin.version>
         <maven-javadoc-plugin.version>3.1.0</maven-javadoc-plugin.version>
-        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
         <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
     </properties>
