@@ -42,7 +42,7 @@
         <project.build.outputTimestamp>1980-01-01T00:00:02Z</project.build.outputTimestamp>
 
         <!-- PROD -->
-        <jackson-databind.version>2.22.1</jackson-databind.version>
+        <jackson-databind.version>2.22.2</jackson-databind.version>
         <command-line-util.version>2026.08.2200453</command-line-util.version>
 
         <!-- TEST -->
