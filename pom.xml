@@ -43,7 +43,7 @@
 
         <!-- PROD -->
         <jackson-databind.version>2.22.2</jackson-databind.version>
-        <command-line-util.version>2026.08.2200453</command-line-util.version>
+        <command-line-util.version>2026.9.7</command-line-util.version>
 
         <!-- TEST -->
         <junit.version>6.1.3</junit.version>
